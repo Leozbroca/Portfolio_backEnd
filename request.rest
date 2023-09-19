@@ -1,9 +1,9 @@
 ### Envio de Email
-GET http://localhost:3003/send
+GET https://portfolio-back-nb8m0rxe1-leozbroca.vercel.app/send
 Content-Type: application/json
 
 {
-    "name":"Gabriel Mina",
+    "name":"Leonardo Broca",
     "email":"mina118@gmail.com",
     "subject":"Proposta de emprego",
     "message":"Hello World!"
