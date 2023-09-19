@@ -1,22 +1,20 @@
 import { Request, Response } from "express";
+import EmailBussiness from "../bussiness/EmailBussiness";
 
 class EmailController {
-    async signup(req: Request, res: Response): Promise<void> {
+    async EmailSend(req: Request, res: Response): Promise<void> {
         try {
-          const { name , email, password, role } = req.body;
-    
-          const token:any = await userBussiness.signup(name, email, password, role);
-    
-          res.status(201).send({ message: "User created successfully!", token });
+          const { name , email, subject, message } = req.body;
+         
+          await EmailBussiness.SendEmail(name, email, subject, message);
+          
+          res.status(201).send();
         } catch (error: any) {
           res.status(400).send({
             message: error.message,
           });
-        } finally {
-          await BaseDatabase.destroyConnection();
         }
       }
-
 }
 
 export default new EmailController()
