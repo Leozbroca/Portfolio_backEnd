@@ -1,5 +1,5 @@
 ### Envio de Email
-POST https://portfolio-back-end-eight.vercel.app/send
+GET http://localhost:3003/send
 Content-Type: application/json
 
 {
