@@ -10,6 +10,7 @@ class EmailBussiness {
     subject: string,
     message: string
   ) {
+
     const mailOptions = {
       from: `<${process.env.NODEMAILER_USER}>`,
       to: `${process.env.NODEMAILER_MYEMAIL}`,
@@ -21,13 +22,17 @@ class EmailBussiness {
                 <p>Mensagem: ${message}<p>`
     };
 
-    transporter.sendMail(mailOptions, function (error, info) {
-      if (error) {
-        return error
-      } else {
-        return info.response
-      }
-    });
+     await transporter.sendMail(mailOptions)
+
+     .then((res) => {
+      console.log("res:",res)
+     })
+     .catch((error) => {
+      console.log("error:", error)
+     })
+
+    
+    
   }
 }
 
