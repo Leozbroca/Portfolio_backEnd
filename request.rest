@@ -1,5 +1,5 @@
 ### Envio de Email
-POST https://portfolio-back-pmln046ne-leozbroca.vercel.app/send
+GET https://portfolio-back-pmln046ne-leozbroca.vercel.app/send
 Content-Type: application/json
 
 {
