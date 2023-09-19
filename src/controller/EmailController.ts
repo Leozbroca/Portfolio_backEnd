@@ -8,7 +8,7 @@ class EmailController {
          
           await EmailBussiness.SendEmail(name, email, subject, message);
           
-          res.status(201).send({message: "Ok"});
+          res.status(201).send({message: req.body});
         } catch (error: any) {
           res.status(400).send({
             message: error.message,
