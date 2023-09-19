@@ -28,8 +28,6 @@ class EmailBussiness {
         console.log(info.response);
       }
     });
-
-    return;
   }
 }
 
