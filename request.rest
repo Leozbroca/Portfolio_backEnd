@@ -1,0 +1,10 @@
+### Envio de Email
+POST https://portfolio-back-pmln046ne-leozbroca.vercel.app/send
+Content-Type: application/json
+
+{
+    "name":"Gabriel Mina",
+    "email":"mina118@gmail.com",
+    "subject":"Proposta de emprego",
+    "message":"Hello World!"
+}
