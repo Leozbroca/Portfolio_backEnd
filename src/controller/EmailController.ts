@@ -5,10 +5,10 @@ class EmailController {
     async EmailSend(req: Request, res: Response): Promise<void> {
         try {
           const {name, email, subject, message } = req.body;
-         console.log(req.body)
+         
           await EmailBussiness.SendEmail(name, email, subject, message);
           
-          res.status(201).send({message: res});
+          res.status(201).send({message: req.body});
         } catch (error: any) {
           res.status(400).send({
             message: error.message,
