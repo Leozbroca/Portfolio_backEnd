@@ -12,7 +12,7 @@ const transporter = nodemailer.createTransport({
     user: process.env.NODEMAILER_USER,
     pass: process.env.NODEMAILER_PASS,
   },
-  tls: { ciphers: "SSLv3", rejectUnauthorized: false },
+  // tls: { ciphers: "SSLv3", rejectUnauthorized: false },
 });
 
 export default transporter;
