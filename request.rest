@@ -1,9 +1,9 @@
 ### Cadastro de usuário 
-GET http://localhost:3003/send
+POST http://localhost:3003/send
 Content-Type: application/json
 
 {
- "name":"Leonardo Broca",
+    "name":"Leonardo Broca",
     "email":"mina118@gmail.com",
     "subject":"Proposta de emprego",
     "message":"Hello World!"

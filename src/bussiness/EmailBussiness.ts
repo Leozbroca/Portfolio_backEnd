@@ -3,18 +3,7 @@ import transporter from "../service/transporter";
 import dotenv from "dotenv";
 
 dotenv.config();
-let Mailgen = require('mailgen');
 
-const mailGenerator = new Mailgen({
-  theme: 'default',
-  product: {
-      // Appears in header & footer of e-mails
-      name: 'Leozbroca - Portfólio',
-      link: 'https://mailgen.js/',
-      // Optional product logo
-      logo: 'https://avatars.githubusercontent.com/u/91346150?s=400&u=1b24328c528aa194ea11bf3228c2e3f9a5be8cd6&v=4'
-  }
-});
 
 
 class EmailBussiness {
@@ -24,14 +13,22 @@ class EmailBussiness {
     subject: string,
     message: string
   ) {
+    let Mailgen = require('mailgen');
 
+    const mailGenerator = new Mailgen({
+      theme: 'default',
+      product: {
+          name: `${name} - ${email}`,
+          link: 'https://mailgen.js/',
+          // Optional product logo
+          logo: "https://avatars.githubusercontent.com/u/91346150?v=4"
+      }
+    });
     const emailGen = {
       body: {
-          name: `Nome: ${name} --- Email: ${email}`,
-          intro: `Título: ${subject}`,
-          action: {
-              instructions: `Mensagem: ${message}`,
-          },
+          name: `Leonardo Broca`,
+          intro: `<b>Título: ${subject}</b>`,
+          outro: `<b>Mensagem:</b> <p>${message}</p></br>`
       }
     };
     
@@ -41,7 +38,7 @@ class EmailBussiness {
     const mailOptions = {
       from: `<${process.env.NODEMAILER_USER}>`,
       to: `${process.env.NODEMAILER_MYEMAIL}`,
-      subject: `Portfólio - Novo Email!`,
+      subject: `Portfólio - Novo Email!!!`,
       text: `Nome: ${name}, Subject: ${subject}, Email: ${email}, Message: ${message}`,
       html: `${emailBody}`
     };
@@ -55,6 +52,8 @@ class EmailBussiness {
       console.log("error:", error)
      })
 
+    
+    
   }
 }
 

@@ -5,7 +5,7 @@ class EmailController {
     async EmailSend(req: Request, res: Response): Promise<void> {
         try {
           const {name, email, subject, message } = req.body;
-       
+          
           await EmailBussiness.SendEmail(name, email, subject, message);
           
           res.status(201).send();
