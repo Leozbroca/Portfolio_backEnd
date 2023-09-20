@@ -1,9 +1,9 @@
-### Envio de Email
-GET https://portfolio-back-nb8m0rxe1-leozbroca.vercel.app/send
+### Cadastro de usuário 
+GET http://localhost:3003/send
 Content-Type: application/json
 
 {
-    "name":"Leonardo Broca",
+ "name":"Leonardo Broca",
     "email":"mina118@gmail.com",
     "subject":"Proposta de emprego",
     "message":"Hello World!"

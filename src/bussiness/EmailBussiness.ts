@@ -1,7 +1,21 @@
 import transporter from "../service/transporter";
+// import logoG from "/logoGold.png"
 import dotenv from "dotenv";
 
 dotenv.config();
+let Mailgen = require('mailgen');
+
+const mailGenerator = new Mailgen({
+  theme: 'default',
+  product: {
+      // Appears in header & footer of e-mails
+      name: 'Leozbroca - Portfólio',
+      link: 'https://mailgen.js/',
+      // Optional product logo
+      logo: 'https://avatars.githubusercontent.com/u/91346150?s=400&u=1b24328c528aa194ea11bf3228c2e3f9a5be8cd6&v=4'
+  }
+});
+
 
 class EmailBussiness {
   async SendEmail(
@@ -11,15 +25,25 @@ class EmailBussiness {
     message: string
   ) {
 
+    const emailGen = {
+      body: {
+          name: `Nome: ${name} --- Email: ${email}`,
+          intro: `Título: ${subject}`,
+          action: {
+              instructions: `Mensagem: ${message}`,
+          },
+      }
+    };
+    
+    const emailBody = mailGenerator.generate(emailGen);
+
+
     const mailOptions = {
       from: `<${process.env.NODEMAILER_USER}>`,
       to: `${process.env.NODEMAILER_MYEMAIL}`,
       subject: `Portfólio - Novo Email!`,
       text: `Nome: ${name}, Subject: ${subject}, Email: ${email}, Message: ${message}`,
-      html: `<h1>Nome da pessoa: ${name}<h1> <br/> 
-                <h2>Título: ${subject}<h2> <br/> 
-                <h2>Email da pessoa: ${email}<h2> <br/> 
-                <p>Mensagem: ${message}<p>`
+      html: `${emailBody}`
     };
 
      await transporter.sendMail(mailOptions)
@@ -31,8 +55,6 @@ class EmailBussiness {
       console.log("error:", error)
      })
 
-    
-    
   }
 }
 
